@@ -13,7 +13,7 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 // Global variables
-var passwordLength = 8 // length of password
+var passwordLength = 8;
 var useLowerCaseLtrs; 
 var useUpperCaseLtrs; 
 var useNumCharacters; 
@@ -25,7 +25,7 @@ var specialCharacters = ["!",'"',"#","$","%","&","/'","(",")","*","+",",","-",".
 var passwordCharacters = []; // array of all the characters to generate password
 var finalPassword = [];
 var isError = false; 
-var cancel = false // cancels all other prompts if true
+var cancel = false; // cancels all other prompts if true
 // RegExp to test if prompt value contains any non-digit values
 // RegExp source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes
 var onlyDigits = /^\d+$/;
@@ -34,7 +34,7 @@ var onlyDigits = /^\d+$/;
 function getPasswordLength() {
   passwordLength = prompt("How many characters?\nMust be a number bewteen 8 and 128")
   if(onlyDigits.test(passwordLength)){
-    input = parseInt(passwordLength)
+    input = parseInt(passwordLength);
     while (
       passwordLength < 8 ||
       passwordLength > 128
@@ -45,15 +45,15 @@ function getPasswordLength() {
       // Prompt was returning NaN after selecting "cancel". Used isNaN to catch and cancel prompts based on NaN type.
       // isNaN source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
       if (isNaN((passwordLength))) {
-        cancel = true
+        cancel = true;
         break
       } 
     }
     return parseInt(passwordLength)
   } else if (passwordLength === null) {
-      cancel = true
+      cancel = true;
   }  else {
-    getPasswordLength()
+    getPasswordLength();
   }
 }
 
@@ -96,15 +96,15 @@ function randomNumber() {
   var min = 0;
   var max = passwordCharacters.length - 1;
   var random = Math.floor(Math.random() * (max - min + 1) + min);
-  return random
+  return random;
 }
 
 // Use passwordCharacters array and a random number to generate a password 
 function createPassword() {
   for (var i = 0; i < passwordLength; i++) {
-    var random = randomNumber()
-    var char = passwordCharacters[random]
-    finalPassword.push(char)
+    var random = randomNumber();
+    var char = passwordCharacters[random];
+    finalPassword.push(char);
   }
 }
 
@@ -131,7 +131,7 @@ function generatePassword() {
   getPasswordLength();
 
   if(cancel){
-      return "Your Secure Password"
+      return "Your Secure Password";
   } else {
       lowerCasePrompt();
       upperCasePrompt();
